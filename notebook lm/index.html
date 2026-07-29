@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성형 AI와 저작권의 경계 - 올블랙 인터랙티브 가이드</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Pretendard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            400: '#818cf8',
+                            300: '#a5b4fc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #030712; 
+            color: #f3f4f6; 
+        }
+        .dark-glass {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .dark-glass-hover:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+        
+        /* Smooth glowing effects */
+        .glow-indigo { box-shadow: 0 0 20px rgba(99, 102, 241, 0.25); }
+        .glow-emerald { box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+        .glow-rose { box-shadow: 0 0 20px rgba(244, 63, 94, 0.25); }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white bg-black">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-slate-800/80 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600 text-white flex items-center justify-center shadow-lg font-bold text-xl glow-indigo">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider bg-indigo-950/80 text-indigo-300 px-2 py-0.5 rounded border border-indigo-700/50">KCC Copyright Guidelines</span>
+                            <span class="text-[10px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-700/50">2026 최신 개정판</span>
+                        </div>
+                        <h1 class="text-base sm:text-lg font-extrabold text-white tracking-tight">생성형 AI와 저작권의 경계 리포트</h1>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-3 text-xs">
+                    <a href="../index.html" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold rounded-xl transition flex items-center gap-2 border border-slate-700/80 shadow-sm">
+                        <i class="fa-solid fa-house text-indigo-400"></i> 홈
+                    </a>
+                    <button onclick="copyCurrentSummary()" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold rounded-xl transition flex items-center gap-2 border border-slate-700/80 shadow-sm">
+                        <i class="fa-regular fa-copy text-indigo-400"></i> 요약 복사
+                    </button>
+                    <a href="#sec-dispute" class="px-3.5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition flex items-center gap-2 shadow-lg glow-indigo">
+                        <i class="fa-solid fa-handshake-angle"></i> 분쟁조정 바로가기
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Navigation Links (Vertical Scroll Indicators) -->
+        <div class="bg-slate-950/80 border-t border-slate-800/60 overflow-x-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+                <nav class="flex space-x-2 text-xs font-medium min-w-max text-slate-400">
+                    <a href="../index.html" class="px-3 py-1.5 rounded-lg text-slate-200 bg-slate-900 hover:bg-slate-800 transition flex items-center gap-1.5 border border-slate-700/80 font-semibold">
+                        <i class="fa-solid fa-house text-indigo-400"></i> 홈
+                    </a>
+                    <a href="#sec-overview" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-900 transition flex items-center gap-1.5 border border-transparent hover:border-slate-800">
+                        <i class="fa-solid fa-gavel text-indigo-400"></i> 1. 저작권 인정 원칙
+                    </a>
+                    <a href="#sec-infringement" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-900 transition flex items-center gap-1.5 border border-transparent hover:border-slate-800">
+                        <i class="fa-solid fa-magnifying-glass-chart text-amber-400"></i> 2. 침해 판단 & RAG
+                    </a>
+                    <a href="#sec-prompt" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-900 transition flex items-center gap-1.5 border border-transparent hover:border-slate-800">
+                        <i class="fa-solid fa-terminal text-cyan-400"></i> 3. 프롬프트 위험 진단
+                    </a>
+                    <a href="#sec-stakeholders" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-900 transition flex items-center gap-1.5 border border-transparent hover:border-slate-800">
+                        <i class="fa-solid fa-users-gear text-emerald-400"></i> 4. 주체별 실무 수칙
+                    </a>
+                    <a href="#sec-cases" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-900 transition flex items-center gap-1.5 border border-transparent hover:border-slate-800">
+                        <i class="fa-solid fa-book-bookmark text-purple-400"></i> 5. 주요 판례 & 사례
+                    </a>
+                    <a href="#sec-dispute" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-900 transition flex items-center gap-1.5 border border-transparent hover:border-slate-800">
+                        <i class="fa-solid fa-file-contract text-rose-400"></i> 6. 분쟁 조정 & Q&A
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Main Continuous Scroll Wrapper -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Stat Key Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="dark-glass p-5 rounded-2xl dark-glass-hover transition duration-300 flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-rose-950/80 text-rose-400 border border-rose-800/50 flex items-center justify-center text-xl flex-shrink-0 glow-rose">
+                    <i class="fa-solid fa-user-slash"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">AI 저작권 원칙</div>
+                    <div class="text-sm font-extrabold text-white">단독 생성물 보호 불가</div>
+                    <div class="text-xs text-rose-400 mt-0.5 font-medium">인간의 창작적 개입 필수</div>
+                </div>
+            </div>
+
+            <div class="dark-glass p-5 rounded-2xl dark-glass-hover transition duration-300 flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-indigo-950/80 text-indigo-400 border border-indigo-800/50 flex items-center justify-center text-xl flex-shrink-0 glow-indigo">
+                    <i class="fa-solid fa-filter"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">보호 범위</div>
+                    <div class="text-sm font-extrabold text-white">아이디어 vs 표현 이분법</div>
+                    <div class="text-xs text-indigo-400 mt-0.5 font-medium">구체적 표현물만 보호 대상</div>
+                </div>
+            </div>
+
+            <div class="dark-glass p-5 rounded-2xl dark-glass-hover transition duration-300 flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-950/80 text-amber-400 border border-amber-800/50 flex items-center justify-center text-xl flex-shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">저작권 침해 판정</div>
+                    <div class="text-sm font-extrabold text-white">의거성 + 실질적 유사성</div>
+                    <div class="text-xs text-amber-400 mt-0.5 font-medium">두 요건 동시 충족 시 성립</div>
+                </div>
+            </div>
+
+            <div class="dark-glass p-5 rounded-2xl dark-glass-hover transition duration-300 flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 flex items-center justify-center text-xl flex-shrink-0 glow-emerald">
+                    <i class="fa-solid fa-scale-unbalanced-flip"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">책임 주체 분담</div>
+                    <div class="text-sm font-extrabold text-white">이용자 vs 사업자</div>
+                    <div class="text-xs text-emerald-400 mt-0.5 font-medium">프롬프트/파인튜닝 구분</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Action Resource Banner -->
+        <div class="dark-glass p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-indigo-900/40 shadow-xl">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-950 text-indigo-400 border border-indigo-800/60 flex items-center justify-center text-base font-bold flex-shrink-0">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-white flex items-center gap-2">
+                        핵심 학습 & 발표 자료 바로가기
+                    </div>
+                    <div class="text-[11px] text-slate-400">가이드라인 관련 발표자료 다운로드, 인포그래픽 및 동영상 교육 콘텐츠</div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+                <button onclick="downloadPresentation()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-indigo-950/80 hover:bg-indigo-900 text-indigo-300 font-bold text-xs rounded-xl border border-indigo-700/60 hover:border-indigo-400 transition flex items-center justify-center gap-2 shadow-lg glow-indigo">
+                    <i class="fa-solid fa-file-arrow-down text-indigo-400 text-sm"></i> 발표자료 다운로드
+                </button>
+                <button onclick="openInfographicModal()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 font-bold text-xs rounded-xl border border-cyan-700/60 hover:border-cyan-400 transition flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-circle-nodes text-cyan-400 text-sm"></i> 인포그래픽 보기
+                </button>
+                <button onclick="openVideoModal()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-rose-950/80 hover:bg-rose-900 text-rose-300 font-bold text-xs rounded-xl border border-rose-700/60 hover:border-rose-400 transition flex items-center justify-center gap-2 shadow-lg glow-rose">
+                    <i class="fa-solid fa-circle-play text-rose-400 text-sm"></i> 동영상 보기
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION 1: 저작권 인정 원칙 -->
+        <section id="sec-overview" class="space-y-6 pt-4 scroll-mt-24">
+            
+            <!-- Landmark Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 p-6 sm:p-8 border border-indigo-900/50 shadow-2xl">
+                <div class="absolute -right-8 -bottom-8 opacity-10 text-white text-9xl pointer-events-none">
+                    <i class="fa-solid fa-gavel"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-full text-xs font-bold tracking-wide">
+                        <i class="fa-solid fa-ban"></i> 확립 글로벌 판례: 탈러 판결 (Thaler v. Perlmutter) & KCC 지침
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+                        "인간의 창작적 개입이 없는 AI 단독 생성물은 저작권이 인정되지 않습니다."
+                    </h2>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                        미국 연방법원의 <span class="text-amber-300 font-semibold">'Thaler v. Perlmutter'</span> 판결과 한국저작권위원회(KCC) 지침에 따르면, AI가 스스로 생성한 이미지·텍스트·코드는 인간 저작자가 아니므로 저작권 등록이 불가능합니다.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="dark-glass p-4 rounded-xl border-rose-900/40">
+                            <div class="text-xs font-bold text-rose-400 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-xmark"></i> 저작권 불인정 (GAI-Generated)
+                            </div>
+                            <div class="text-xs text-slate-300">키워드 프롬프트 몇 줄로 생성된 원본 이미지, 문장, 코드</div>
+                        </div>
+                        <div class="dark-glass p-4 rounded-xl border-emerald-900/40">
+                            <div class="text-xs font-bold text-emerald-400 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-check"></i> 저작권 인정 가능 (GAI-Assisted)
+                            </div>
+                            <div class="text-xs text-slate-300">인간이 직접 실질적 수정·배치·선별·가공을 가한 2차적 창작물</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Human Contribution Scale & Idea vs Expression Funnel -->
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">01. Human Contribution Scale</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1">인간 기여도에 따른 저작성 진단 인터랙션</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">슬라이더를 조절하여 인간의 창작적 수정·개입 정도에 따른 법적 저작권 인정 상태를 확인하세요.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Idea vs Expression Concept Diagram -->
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <div class="text-center text-xs font-bold text-slate-400 uppercase tracking-wider">아이디어 vs 표현 이분법 메커니즘</div>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-rose-950/50 border border-rose-900/50 text-rose-300 p-3.5 rounded-xl text-xs space-y-1.5">
+                                <div class="font-bold flex items-center justify-center gap-1.5 text-sm">
+                                    <i class="fa-solid fa-lock-open text-rose-400"></i> 저작권 독점 불가 (아이디어 영역)
+                                </div>
+                                <div class="flex justify-center gap-2 flex-wrap text-[11px] font-medium text-rose-300">
+                                    <span class="bg-slate-900 px-2 py-0.5 rounded border border-rose-900/50">화풍 / 스타일</span>
+                                    <span class="bg-slate-900 px-2 py-0.5 rounded border border-rose-900/50">세계관 / 주제</span>
+                                    <span class="bg-slate-900 px-2 py-0.5 rounded border border-rose-900/50">추상적 구도</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center my-1">
+                                <div class="px-4 py-1.5 bg-indigo-950 text-indigo-300 border border-indigo-700/50 rounded-full text-xs font-bold flex items-center gap-2 glow-indigo">
+                                    <i class="fa-solid fa-filter text-xs"></i> 구체적 표현화 과정
+                                </div>
+                            </div>
+
+                            <div class="bg-emerald-950/50 border border-emerald-900/50 text-emerald-300 p-4 rounded-xl text-xs space-y-1.5">
+                                <div class="font-bold flex items-center justify-center gap-1.5 text-sm text-emerald-400">
+                                    <i class="fa-solid fa-copyright"></i> 저작권 보호 대상 (표현 영역)
+                                </div>
+                                <p class="text-xs text-slate-300 font-normal text-center">
+                                    외형적으로 구체화된 캐릭터 세부 디자인, 개별 문장 연쇄, 독창적 멜로디 및 인간의 실질적 가공물
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Slider Widget -->
+                    <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white text-sm flex items-center">
+                                <i class="fa-solid fa-sliders text-indigo-400 mr-2"></i>인간 개입 비율 조절
+                            </span>
+                            <span id="contribution-percentage" class="text-indigo-400 font-extrabold text-xl bg-indigo-950 px-3 py-1 rounded-xl border border-indigo-800">0%</span>
+                        </div>
+
+                        <input type="range" id="contribution-slider" min="0" max="100" value="0" step="10" oninput="updateContributionLevel(this.value)" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+
+                        <div id="contribution-card" class="p-4 rounded-xl bg-rose-950/50 border border-rose-900/60 space-y-2 transition-all">
+                            <div class="flex items-center justify-between">
+                                <span id="contribution-status-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-900/80 text-rose-300 border border-rose-700/50">순수 AI 산출물 (GAI-Generated)</span>
+                                <i id="contribution-icon" class="fa-solid fa-circle-xmark text-rose-400 text-lg"></i>
+                            </div>
+                            <p id="contribution-desc" class="text-xs text-slate-300 leading-relaxed">
+                                단순 프롬프트 지시문만으로 생성된 결과물입니다. 인간의 법적 저작권 등록이 불가능합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 침해 판단 & RAG -->
+        <section id="sec-infringement" class="space-y-6 pt-4 scroll-mt-24">
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">02. Legal Test Simulator</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1">저작권 침해 성립 요건 시뮬레이터</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">저작권 침해가 인정되려면 **의거성(Access / Reliance)**과 **실질적 유사성(Substantial Similarity)** 두 요소가 동시 충족되어야 합니다.</p>
+                </div>
+
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Switch 1: Reliance -->
+                        <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 space-y-3 hover:border-indigo-500/50 transition">
+                            <div class="flex items-center justify-between">
+                                <label for="toggle-reliance" class="font-bold text-white text-sm flex items-center gap-2 cursor-pointer">
+                                    <i class="fa-solid fa-link text-indigo-400"></i> 1. 의거성 (Access / Reliance)
+                                </label>
+                                <input type="checkbox" id="toggle-reliance" onchange="calculateInfringement()" class="w-5 h-5 accent-indigo-500 cursor-pointer">
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                AI 모델 학습 데이터에 해당 원작이 포함되었거나, 프롬프트에서 특정 기존 작품을 직접 지시했는가?
+                            </p>
+                            <div class="bg-slate-950 p-3 rounded-lg text-[11px] text-slate-300 space-y-1 border border-slate-800">
+                                <div>• 프롬프트에 특정 작품명/캐릭터명 명시 시 강력 추정</div>
+                                <div>• 학습 데이터 내 원작 복원 입증 시 성립</div>
+                            </div>
+                        </div>
+
+                        <!-- Switch 2: Substantial Similarity -->
+                        <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 space-y-3 hover:border-indigo-500/50 transition">
+                            <div class="flex items-center justify-between">
+                                <label for="toggle-similarity" class="font-bold text-white text-sm flex items-center gap-2 cursor-pointer">
+                                    <i class="fa-solid fa-clone text-indigo-400"></i> 2. 실질적 유사성 (Substantial Similarity)
+                                </label>
+                                <input type="checkbox" id="toggle-similarity" onchange="calculateInfringement()" class="w-5 h-5 accent-indigo-500 cursor-pointer">
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                AI 출력 결과물이 기존 저작물의 **보호받는 구체적 표현**과 창작적으로 대단히 유사한가?
+                            </p>
+                            <div class="bg-slate-950 p-3 rounded-lg text-[11px] text-slate-300 space-y-1 border border-slate-800">
+                                <div>• 단순히 분위기/화풍이 비슷한 경우 -> 침해 미성립</div>
+                                <div>• 세부 캐릭터 외형/독창적 문장 동일 -> 실질적 유사성 인정</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result Display Box -->
+                    <div id="infringement-result-box" class="p-5 rounded-xl text-center transition-all bg-slate-900 text-slate-400 font-bold border border-slate-800">
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">진단 결과 메세지</div>
+                        <div id="infringement-status-text" class="text-sm sm:text-base">상단의 의거성과 실질적 유사성 토글 스위치를 작동하여 테스트해보세요.</div>
+                    </div>
+                </div>
+
+                <!-- RAG & Vector DB Risk Card -->
+                <div class="border border-slate-800 rounded-2xl p-6 bg-slate-950 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <h4 class="font-extrabold text-white text-base flex items-center gap-2">
+                            <i class="fa-solid fa-database text-amber-400"></i>
+                            RAG (검색증강생성) 및 벡터 DB 구축 시 저작권 리스크
+                        </h4>
+                        <span class="bg-amber-950 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-800">
+                            기업 사내망 구축 시 주의
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+                            <div class="text-xs font-bold text-indigo-400">Step 1. 분할 저장 (Chunking)</div>
+                            <p class="text-xs text-slate-300 leading-relaxed">외부 서적/PDF를 벡터 저장소에 저장 시 **복제권 침해** 이슈가 발생할 수 있습니다.</p>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+                            <div class="text-xs font-bold text-amber-400">Step 2. 프롬프트 주입 (Context Injection)</div>
+                            <p class="text-xs text-slate-300 leading-relaxed">추출된 원문을 LLM 컨텍스트에 주입하는 행위는 **전송권 및 공정이용 범주** 검토 대상입니다.</p>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+                            <div class="text-xs font-bold text-emerald-400">Step 3. 리스크 완화책</div>
+                            <p class="text-xs text-slate-300 leading-relaxed">사전 라이선스 체결 또는 출처 명시 및 요약본 가공 변환 방식을 채택하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 프롬프트 위험 진단 -->
+        <section id="sec-prompt" class="space-y-6 pt-4 scroll-mt-24">
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">03. Interactive Diagnostic Engine</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1">실시간 프롬프트 저작권 위험도 검증기</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">작성하려는 프롬프트에 의거성을 유발하거나 특정 저작권을 침해하는 고위험 키워드가 포함되었는지 확인하세요.</p>
+                </div>
+
+                <!-- Presets Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-rose-950/30 border border-rose-900/50 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-900 text-rose-200 text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-rose-700">
+                                <i class="fa-solid fa-triangle-exclamation"></i> 고위험 패턴 예시 (High Risk)
+                            </span>
+                            <button onclick="fillPrompt('영화 아바타의 나비족 캐릭터를 똑같이 그리고 장면 구도를 원작대로 렌더링해 줘.')" class="text-xs font-bold text-rose-400 hover:underline">
+                                적용 <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="bg-slate-950 p-3 rounded-xl text-xs font-mono text-slate-300 border border-rose-900/30">
+                            "영화 아바타의 나비족 캐릭터를 똑같이 그리고 장면 구도를 원작대로 렌더링해 줘."
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-950/30 border border-emerald-900/50 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-emerald-900 text-emerald-200 text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-emerald-700">
+                                <i class="fa-solid fa-shield-check"></i> 저위험 패턴 예시 (Safe Pattern)
+                            </span>
+                            <button onclick="fillPrompt('푸른 피부를 가진 외계 종족이 발광하는 신비로운 숲속에서 활을 든 판타지 일러스트.')" class="text-xs font-bold text-emerald-400 hover:underline">
+                                적용 <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="bg-slate-950 p-3 rounded-xl text-xs font-mono text-slate-300 border border-emerald-900/30">
+                            "푸른 피부를 가진 외계 종족이 발광하는 신비로운 숲속에서 활을 든 판타지 일러스트."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Field & Live Diagnostics -->
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <h4 class="font-bold text-white text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-vial-virus text-cyan-400"></i>
+                        실시간 프롬프트 저작권 진단기
+                    </h4>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="custom-prompt-input" placeholder="프롬프트를 입력하세요 (예: 피카소 스타일로 미키마우스 캐릭터 그려줘)" class="flex-grow px-4 py-3 text-xs sm:text-sm border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-900 text-white placeholder-slate-500">
+                        <button onclick="analyzePrompt()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl transition shadow-lg glow-indigo whitespace-nowrap flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> 진단 실행
+                        </button>
+                    </div>
+
+                    <div id="prompt-analysis-output" class="hidden p-5 rounded-xl text-xs space-y-3 transition-all"></div>
+
+                    <!-- Action Resource Buttons -->
+                    <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
+                        <button onclick="downloadPresentation()" class="flex-1 min-w-[150px] px-4 py-3 bg-indigo-950/60 hover:bg-indigo-900/80 text-indigo-300 font-bold text-xs rounded-xl border border-indigo-700/60 hover:border-indigo-400 transition flex items-center justify-center gap-2 shadow-lg glow-indigo">
+                            <i class="fa-solid fa-file-arrow-down text-indigo-400 text-sm"></i> 발표자료 다운로드
+                        </button>
+                        <button onclick="openInfographicModal()" class="flex-1 min-w-[150px] px-4 py-3 bg-cyan-950/60 hover:bg-cyan-900/80 text-cyan-300 font-bold text-xs rounded-xl border border-cyan-700/60 hover:border-cyan-400 transition flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-circle-nodes text-cyan-400 text-sm"></i> 인포그래픽 보기
+                        </button>
+                        <button onclick="openVideoModal()" class="flex-1 min-w-[150px] px-4 py-3 bg-rose-950/60 hover:bg-rose-900/80 text-rose-300 font-bold text-xs rounded-xl border border-rose-700/60 hover:border-rose-400 transition flex items-center justify-center gap-2 shadow-lg glow-rose">
+                            <i class="fa-solid fa-circle-play text-rose-400 text-sm"></i> 동영상 보기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 주체별 실무 수칙 -->
+        <section id="sec-stakeholders" class="space-y-6 pt-4 scroll-mt-24">
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">04. Stakeholder Responsibilities</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1">생태계 3대 주체별 실무 수칙 & 자가 점검</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">원저작자, AI 이용자, AI 사업자 각각의 분쟁 예방 준수 항목입니다.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Creator -->
+                    <div class="border border-slate-800 rounded-2xl p-5 space-y-4 bg-slate-950/80 hover:border-purple-500/50 transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950 text-purple-400 border border-purple-800/50 flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <h4 class="font-extrabold text-white text-base">1. 원저작권자 (Creator)</h4>
+                            <p class="text-xs text-slate-400">무단 AI 학습 차단 및 권리 보호</p>
+                            
+                            <div class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-3">
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-purple-500 mt-0.5">
+                                    <span><strong>robots.txt:</strong> 크롤링 차단 태그 적용</span>
+                                </label>
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-purple-500 mt-0.5">
+                                    <span><strong>Opt-out 신청:</strong> 학습 제외 플랫폼 등록</span>
+                                </label>
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-purple-500 mt-0.5">
+                                    <span><strong>RMI 워터마크:</strong> 메타데이터 권리정보 내장</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User -->
+                    <div class="border border-slate-800 rounded-2xl p-5 space-y-4 bg-slate-950/80 hover:border-indigo-500/50 transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-950 text-indigo-400 border border-indigo-800/50 flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </div>
+                            <h4 class="font-extrabold text-white text-base">2. AI 이용자 (User)</h4>
+                            <p class="text-xs text-slate-400">상업적 이용 시 안전성 검증</p>
+
+                            <div class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-3">
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-indigo-500 mt-0.5">
+                                    <span><strong>프롬프트 클렌징:</strong> 고유 저작물명 제외</span>
+                                </label>
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-indigo-500 mt-0.5">
+                                    <span><strong>이미지 역검색:</strong> 결과물 유사성 2차 확인</span>
+                                </label>
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-indigo-500 mt-0.5">
+                                    <span><strong>ToS 라이선스:</strong> 상업용 허용 플랜 적용</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider -->
+                    <div class="border border-slate-800 rounded-2xl p-5 space-y-4 bg-slate-950/80 hover:border-emerald-500/50 transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800/50 flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <h4 class="font-extrabold text-white text-base">3. AI 사업자 (Provider)</h4>
+                            <p class="text-xs text-slate-400">학습 데이터 투명성 및 필터링</p>
+
+                            <div class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-3">
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-emerald-500 mt-0.5">
+                                    <span><strong>학습 데이터 이력:</strong> 출처 데이터 투명화</span>
+                                </label>
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-emerald-500 mt-0.5">
+                                    <span><strong>출력 필터링:</strong> 복제성 출력 사전 차단</span>
+                                </label>
+                                <label class="flex items-start gap-2.5 cursor-pointer">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item accent-emerald-500 mt-0.5">
+                                    <span><strong>파인튜닝 점검:</strong> 무단 미세조정 차단</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Checklist Live Progress Bar -->
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-300">
+                        <span><i class="fa-solid fa-list-check text-indigo-400 mr-1.5"></i> 종합 리스크 방어 준비율</span>
+                        <span id="checklist-ratio-text" class="text-indigo-400 font-mono">0 / 9 달성 (0%)</span>
+                    </div>
+                    <div class="w-full h-3 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                        <div id="checklist-progress-bar" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: 주요 판례 & 사례 -->
+        <section id="sec-cases" class="space-y-6 pt-4 scroll-mt-24">
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">05. Precedents & Case Studies</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1">글로벌 주요 판례 및 분야별 핵심 이슈</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">저작권 기관 및 사법부의 대표 판결 사례와 분야별 시나리오 분석입니다.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Case 1 -->
+                    <div class="border border-slate-800 rounded-2xl p-5 space-y-3 bg-slate-950/80">
+                        <div class="flex justify-between items-center">
+                            <span class="bg-rose-950 text-rose-300 border border-rose-800/50 text-[10px] font-bold px-2.5 py-0.5 rounded-full">미국 저작권청 (USCO)</span>
+                            <span class="text-xs text-slate-500 font-mono">2023.02</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">새벽의 자리아 (Zarya of the Dawn) 사건</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Midjourney로 생성된 이미지 자체는 저작권 등록이 취소되었으나, 인간 작가가 직접 작성한 **스토리 글 및 컷 배치·구성(Arrangement)**에 대해서는 독립적 저작권을 인정받음.
+                        </p>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="border border-slate-800 rounded-2xl p-5 space-y-3 bg-slate-950/80">
+                        <div class="flex justify-between items-center">
+                            <span class="bg-indigo-950 text-indigo-300 border border-indigo-800/50 text-[10px] font-bold px-2.5 py-0.5 rounded-full">국내 웹툰 / 화풍 이슈</span>
+                            <span class="text-xs text-slate-500 font-mono">2024~2026</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">특정 작가 화풍(Style) 모방 AI 모델</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            화풍은 저작권법상 '아이디어' 영역이므로 화풍 모방만으로는 침해 성립이 어렵지만, 캐릭터 독창적 외형이 동일하거나 부정경쟁방지법(무단성과 이용) 위반 가능성이 존재함.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: 분쟁 조정 & Q&A -->
+        <section id="sec-dispute" class="space-y-6 pt-4 scroll-mt-24">
+            
+            <!-- Dispute Resolution Flow -->
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">06. Dispute Resolution</span>
+                    <h3 class="text-xl font-extrabold text-white mt-1">한국저작권위원회 분쟁 조정 절차</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">민사 소송 대비 저렴한 비용과 신속성(3개월 이내 처리)을 갖춘 대량 분쟁 중재 제도입니다.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center relative">
+                        <div class="text-[10px] font-extrabold text-indigo-400 uppercase mb-1">STEP 1</div>
+                        <div class="font-bold text-white text-sm">조정 신청</div>
+                        <div class="text-[11px] text-slate-400 mt-1">신청서 및 입증 자료 제출</div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center relative">
+                        <div class="text-[10px] font-extrabold text-indigo-400 uppercase mb-1">STEP 2</div>
+                        <div class="font-bold text-white text-sm">조정부 구성</div>
+                        <div class="text-[11px] text-slate-400 mt-1">전문위원 3인 지정</div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center relative">
+                        <div class="text-[10px] font-extrabold text-indigo-400 uppercase mb-1">STEP 3</div>
+                        <div class="font-bold text-white text-sm">심의 및 중재</div>
+                        <div class="text-[11px] text-slate-400 mt-1">양측 이견 조율 및 합의안 도출</div>
+                    </div>
+                    <div class="bg-emerald-950/60 p-4 rounded-xl border border-emerald-800 text-center relative">
+                        <div class="text-[10px] font-extrabold text-emerald-400 uppercase mb-1">STEP 4</div>
+                        <div class="font-bold text-emerald-300 text-sm">조정 성립</div>
+                        <div class="text-[11px] text-emerald-400 mt-1">재판상 화해와 동일한 효력</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="dark-glass rounded-3xl p-6 sm:p-8 space-y-4">
+                <h3 class="text-xl font-extrabold text-white border-b border-slate-800 pb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-question text-indigo-400"></i> 자주 묻는 질문 (FAQ)
+                </h3>
+
+                <div class="space-y-3">
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleFaq('faq-1')" class="w-full text-left p-4 font-bold text-xs sm:text-sm text-white hover:bg-slate-900 flex justify-between items-center transition">
+                            <span>Q1. Midjourney나 ChatGPT로 생성한 이미지를 판매해도 문제 없나요?</span>
+                            <i id="faq-icon-faq-1" class="fa-solid fa-chevron-down text-slate-500"></i>
+                        </button>
+                        <div id="faq-1" class="hidden p-4 text-xs text-slate-300 border-t border-slate-800 bg-slate-900/60 leading-relaxed">
+                            A. 서비스 이용약관상 상업적 유료 플랜이라면 판매 자체는 문제되지 않습니다. 다만 **독점적 저작권이 인정되지 않으므로**, 타인이 해당 이미지를 무단 복제하더라도 저작권 침해 소송을 제기하기 어렵습니다.
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleFaq('faq-2')" class="w-full text-left p-4 font-bold text-xs sm:text-sm text-white hover:bg-slate-900 flex justify-between items-center transition">
+                            <span>Q2. 특정 작가의 그림 화풍(Style)을 모방한 결과물은 저작권 침해인가요?</span>
+                            <i id="faq-icon-faq-2" class="fa-solid fa-chevron-down text-slate-500"></i>
+                        </button>
+                        <div id="faq-2" class="hidden p-4 text-xs text-slate-300 border-t border-slate-800 bg-slate-900/60 leading-relaxed">
+                            A. 저작권법상 '화풍'이나 '스타일'은 아이디어 영역에 불과하여 화풍 유사성만으로는 저작권 침해가 성립하지 않습니다. 단, 특정 원작 캐릭터 외형이나 대표 구도가 동일하면 침해 가능성이 있습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Summary Card Block -->
+            <div id="summary-card-block" class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 p-6 sm:p-8 border border-indigo-800/60 shadow-2xl space-y-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg glow-indigo">
+                            <i class="fa-solid fa-bookmark"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-white">Executive Summary</h3>
+                            <p class="text-slate-400 text-xs">생성형 AI 저작권 핵심 가이드 요약 리포트</p>
+                        </div>
+                    </div>
+                    <button onclick="copyCurrentSummary()" class="px-3.5 py-2 bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-200 text-xs font-bold rounded-xl border border-indigo-500/40 transition flex items-center gap-1.5">
+                        <i class="fa-regular fa-copy"></i> 전체 요약 복사
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm">
+                    <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-dot text-indigo-400 mt-1"></i>
+                        <span class="text-slate-200">AI 단독 생성물은 저작자 미인정이며, 오직 인간의 창작적 개입이 가해진 표현만 보호받습니다.</span>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-dot text-indigo-400 mt-1"></i>
+                        <span class="text-slate-200">저작권 침해 판단은 의거성(학습/지시)과 실질적 유사성(표현의 동일)을 동시 검토합니다.</span>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-dot text-cyan-400 mt-1"></i>
+                        <span class="text-slate-200">프롬프트 작성 시 특정 원작명 지시를 피하고 서술형 묘사 단어를 활용해야 안전합니다.</span>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-dot text-emerald-400 mt-1"></i>
+                        <span class="text-slate-200">분쟁 발생 시 한국저작권위원회 분쟁 조정 제도를 활용하여 빠르고 저렴하게 중재받을 수 있습니다.</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Dark Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-8 mt-16 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-medium text-slate-400">생성형 AI와 저작권의 경계: 한국저작권위원회 가이드라인 종합 대시보드</p>
+            <p class="text-slate-600">본 가이드는 지침 정보 제공 목적이며, 개별 구체적 법률 판단은 최종 사법기관의 판결에 따릅니다.</p>
+        </div>
+    </footer>
+
+    <!-- Modal: Infographic View -->
+    <div id="modal-infographic" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 space-y-6 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center">
+                        <i class="fa-solid fa-circle-nodes"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">생성형 AI & 저작권 인포그래픽</h3>
+                </div>
+                <button onclick="closeInfographicModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Infographic Content Visual Block -->
+            <div class="space-y-4">
+                <div class="bg-slate-950 p-2 sm:p-4 rounded-2xl border border-slate-800 flex justify-center items-center">
+                    <img src="AI_시대의_저작권_가이드.png" 
+                         alt="AI 시대의 저작권 가이드" 
+                         class="w-full h-auto max-h-[75vh] object-contain rounded-xl border border-slate-800/80 shadow-2xl" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/1200x1600/030712/38bdf8?text=AI_%EC%8B%9C%EB%8C%80%EC%9D%98_%EC%A0%80%EC%9E%91%EA%B6%8C_%EA%B0%80%EC%9D%B4%EB%93%9C.png';">
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="closeInfographicModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl transition">
+                    닫기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Video Preview -->
+    <div id="modal-video" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full p-6 space-y-6 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-rose-950 text-rose-400 border border-rose-800 flex items-center justify-center">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">생성형 AI 저작권 교육 영상 시청</h3>
+                </div>
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Video Player Container -->
+            <div class="relative aspect-video rounded-2xl bg-black border border-slate-800 overflow-hidden flex items-center justify-center">
+                <video id="guideline-video-player" controls class="w-full h-full rounded-2xl">
+                    <source src="AI_저작권__오해에서_완벽_이해로.mp4" type="video/mp4">
+                    브라우저가 비디오 태그를 지원하지 않습니다.
+                </video>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-slate-400">
+                <span class="text-slate-300 font-semibold"><i class="fa-solid fa-film text-rose-400 mr-1.5"></i> AI_저작권__오해에서_완벽_이해로.mp4</span>
+                <button onclick="closeVideoModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl transition">
+                    창 닫기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        function downloadPresentation() {
+            const a = document.createElement('a');
+            a.href = 'AI_Copyright_Blueprint.pdf';
+            a.download = 'AI_Copyright_Blueprint.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            showToast("AI_Copyright_Blueprint.pdf 다운로드를 시작합니다.", "success");
+        }
+
+        function openInfographicModal() {
+            document.getElementById('modal-infographic').classList.remove('hidden');
+        }
+
+        function closeInfographicModal() {
+            document.getElementById('modal-infographic').classList.add('hidden');
+        }
+
+        function openVideoModal() {
+            const modal = document.getElementById('modal-video');
+            const video = document.getElementById('guideline-video-player');
+            modal.classList.remove('hidden');
+            if (video) {
+                video.currentTime = 0;
+                video.play().catch(() => {
+                    // Auto-play error handling if blocked by browser
+                });
+            }
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('modal-video');
+            const video = document.getElementById('guideline-video-player');
+            if (video) {
+                video.pause();
+            }
+            modal.classList.add('hidden');
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let bgClass = 'bg-slate-900 text-white border border-slate-700';
+            let icon = 'fa-circle-info text-indigo-400';
+            
+            if (type === 'warning') {
+                bgClass = 'bg-rose-950 text-rose-200 border border-rose-800/80';
+                icon = 'fa-triangle-exclamation text-rose-400';
+            } else if (type === 'success') {
+                bgClass = 'bg-emerald-950 text-emerald-200 border border-emerald-800/80';
+                icon = 'fa-circle-check text-emerald-400';
+            }
+
+            toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl shadow-2xl text-xs font-medium ${bgClass} transition-all duration-300 transform translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function updateContributionLevel(val) {
+            document.getElementById('contribution-percentage').innerText = val + '%';
+            
+            const card = document.getElementById('contribution-card');
+            const badge = document.getElementById('contribution-status-badge');
+            const icon = document.getElementById('contribution-icon');
+            const desc = document.getElementById('contribution-desc');
+
+            if (val < 40) {
+                card.className = "p-4 rounded-xl bg-rose-950/50 border border-rose-900/60 space-y-2 transition-all";
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-900/80 text-rose-300 border border-rose-700/50";
+                badge.innerText = "순수 AI 산출물 (GAI-Generated)";
+                icon.className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
+                desc.innerText = "단순 프롬프트 지시문만으로 생성된 결과물입니다. 인간의 창작적 개입이 없어 법적 저작권 등록이 불가능합니다.";
+            } else if (val < 70) {
+                card.className = "p-4 rounded-xl bg-amber-950/50 border border-amber-900/60 space-y-2 transition-all";
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-900/80 text-amber-300 border border-amber-700/50";
+                badge.innerText = "부분 수정/보완 (개별적 검토 필요)";
+                icon.className = "fa-solid fa-triangle-exclamation text-amber-400 text-lg";
+                desc.innerText = "AI 생성물에 일부 직접적 수정이나 배치가 가해졌습니다. 창작적 표현이 새롭게 부여된 가공 부분에 한해 선택적 보호가 가능합니다.";
+            } else {
+                card.className = "p-4 rounded-xl bg-emerald-950/50 border border-emerald-900/60 space-y-2 transition-all";
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-900/80 text-emerald-300 border border-emerald-700/50";
+                badge.innerText = "AI 활용 창작 저작물 (GAI-Assisted)";
+                icon.className = "fa-solid fa-shield-check text-emerald-400 text-lg";
+                desc.innerText = "AI를 도구로 활용하고, 인간 저작자의 독자적 기획, 리터칭, 합성 및 구성이 결합되어 법적 저작권이 인정됩니다.";
+            }
+        }
+
+        function calculateInfringement() {
+            const reliance = document.getElementById('toggle-reliance').checked;
+            const similarity = document.getElementById('toggle-similarity').checked;
+            const resultBox = document.getElementById('infringement-result-box');
+            const statusText = document.getElementById('infringement-status-text');
+
+            if (reliance && similarity) {
+                resultBox.className = "p-5 rounded-xl text-center transition-all bg-rose-900/80 text-rose-100 font-extrabold border border-rose-600 shadow-lg glow-rose";
+                statusText.innerHTML = "<i class='fa-solid fa-triangle-exclamation mr-2 text-rose-300'></i> 저작권 침해 성립 고위험 (Infringement Highly Probable)";
+            } else if (reliance && !similarity) {
+                resultBox.className = "p-5 rounded-xl text-center transition-all bg-amber-900/80 text-amber-100 font-bold border border-amber-600";
+                statusText.innerHTML = "의거성은 인정되나 실질적 유사성 미달 (아이디어만 참조되었거나 변형됨)";
+            } else if (!reliance && similarity) {
+                resultBox.className = "p-5 rounded-xl text-center transition-all bg-amber-900/80 text-amber-100 font-bold border border-amber-600";
+                statusText.innerHTML = "유사성은 인정되나 의거성 미달 (독립적 우연의 일치 가능성)";
+            } else {
+                resultBox.className = "p-5 rounded-xl text-center transition-all bg-emerald-900/80 text-emerald-100 font-bold border border-emerald-600 glow-emerald";
+                statusText.innerHTML = "<i class='fa-solid fa-circle-check mr-2 text-emerald-300'></i> 저작권 침해 미성립 (Safe Zone)";
+            }
+        }
+
+        function fillPrompt(text) {
+            document.getElementById('custom-prompt-input').value = text;
+            analyzePrompt();
+        }
+
+        function analyzePrompt() {
+            const input = document.getElementById('custom-prompt-input').value.trim();
+            const outputBox = document.getElementById('prompt-analysis-output');
+
+            if (!input) {
+                showToast("진단할 프롬프트를 입력해 주세요.", "warning");
+                return;
+            }
+
+            outputBox.classList.remove('hidden');
+
+            const highRiskKeywords = ['화풍', '스타일', '결말', '구도', '동일하게', '똑같이', '캐릭터', '영화', '원작', '디즈니', '미키', '피카소', '아바타', '나비족', '해리포터', '지브리'];
+            const foundKeywords = highRiskKeywords.filter(kw => input.includes(kw));
+
+            if (foundKeywords.length > 0) {
+                outputBox.className = "p-5 rounded-xl text-xs space-y-2 bg-rose-950/70 text-rose-200 border border-rose-800/80 shadow-md";
+                outputBox.innerHTML = `
+                    <div class="font-extrabold text-sm flex items-center gap-1.5 text-rose-300">
+                        <i class="fa-solid fa-triangle-exclamation"></i> 위험 진단: 의거성 유발 고위험 키워드 감지
+                    </div>
+                    <p class="leading-relaxed">입력하신 프롬프트에서 고위험 의심 키워드(<strong>${foundKeywords.join(', ')}</strong>)가 발견되었습니다.</p>
+                    <div class="bg-slate-950 p-3 rounded-lg border border-rose-900/50 text-[11px] text-rose-300">
+                        <strong>실무 조언:</strong> 특정 원작이나 캐릭터 명칭을 직접 지시하는 경우 의거성(Access)이 추정되어 위험합니다. 특정 고유명사를 제외하고 일반적인 서술형 형용사/명사로 대체하세요.
+                    </div>
+                `;
+                showToast("고위험 키워드가 발견되었습니다.", "warning");
+            } else {
+                outputBox.className = "p-5 rounded-xl text-xs space-y-2 bg-emerald-950/70 text-emerald-200 border border-emerald-800/80 shadow-md";
+                outputBox.innerHTML = `
+                    <div class="font-extrabold text-sm flex items-center gap-1.5 text-emerald-300">
+                        <i class="fa-solid fa-shield-check"></i> 위험 진단: 일반 서술형 묘사 패턴 (안전)
+                    </div>
+                    <p class="leading-relaxed">특정 타인의 저작물 고유 명칭을 지정하지 않은 안전한 프롬프트 패턴입니다.</p>
+                    <div class="bg-slate-950 p-3 rounded-lg border border-emerald-900/50 text-[11px] text-emerald-300">
+                        <strong>실무 조언:</strong> 장면의 개별적 분위기와 요소만 묘사하는 방식은 의거성이 부인되어 법적 위험을 낮출 수 있습니다.
+                    </div>
+                `;
+                showToast("안전한 프롬프트 패턴입니다.", "success");
+            }
+        }
+
+        function updateChecklistProgress() {
+            const items = document.querySelectorAll('.chk-item');
+            let checkedCount = 0;
+            items.forEach(item => {
+                if (item.checked) checkedCount++;
+            });
+
+            const total = items.length;
+            const percentage = Math.round((checkedCount / total) * 100);
+
+            document.getElementById('checklist-progress-bar').style.width = percentage + '%';
+            document.getElementById('checklist-ratio-text').innerText = `${checkedCount} / ${total} 달성 (${percentage}%)`;
+        }
+
+        function toggleFaq(id) {
+            const target = document.getElementById(id);
+            const icon = document.getElementById('faq-icon-' + id);
+            if (target.classList.contains('hidden')) {
+                target.classList.remove('hidden');
+                if (icon) icon.className = "fa-solid fa-chevron-up text-indigo-400";
+            } else {
+                target.classList.add('hidden');
+                if (icon) icon.className = "fa-solid fa-chevron-down text-slate-500";
+            }
+        }
+
+        function copyCurrentSummary() {
+            const summaryText = `[생성형 AI와 저작권의 경계 요약 - KCC 가이드라인]
+1. AI 단독 생성물: 저작권 인정 불가 (인간의 창작적 개입 필수)
+2. 보호 대상: 아이디어/화풍 제외, 구체적 표현물만 보호
+3. 침해 성립: 의거성(학습/지시) + 실질적 유사성 동시 충족
+4. 분쟁 방어: 프롬프트 작성 시 원작명 명시 금지 및 사전 라이선스 점검`;
+
+            const tempInput = document.createElement("textarea");
+            tempInput.value = summaryText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("요약 내용이 클립보드에 복사되었습니다!", "success");
+        }
+    </script>
+</body>
+</html>
