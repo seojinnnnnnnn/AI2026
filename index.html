@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,68 +37,53 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: 'Noto Sans KR', 'Inter', sans-serif;
-        }
-
+        body { font-family: 'Noto Sans KR', 'Inter', sans-serif; }
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(229, 231, 235, 0.7);
         }
-
         .dark .glass-card {
             background: rgba(30, 41, 59, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(51, 65, 85, 0.7);
         }
-
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .card-hover:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
-
 <body class="bg-black text-slate-100 dark class transition-colors duration-300 min-h-screen flex flex-col">
 
     <!-- Navigation Bar -->
     <nav class="sticky top-0 z-40 w-full bg-black/80 border-b border-slate-800 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30">
                     <i class="fa-solid fa-code"></i>
                 </div>
                 <div>
-                    <span
-                        class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI
-                        & CS PORTFOLIO</span>
-                    <span class="hidden sm:inline-block text-xs text-slate-400 ml-2 font-medium">컴퓨터공학과 지망 서진 성과
-                        포트폴리오</span>
+                    <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI & CS PORTFOLIO</span>
+                    <span class="hidden sm:inline-block text-xs text-slate-400 ml-2 font-medium">컴퓨터공학과 지망 서진 성과 포트폴리오</span>
                 </div>
             </div>
 
             <!-- Nav Links & Controls -->
             <div class="flex items-center gap-2 sm:gap-4">
-                <button id="themeToggleBtn" onclick="toggleDarkMode()"
-                    class="p-2.5 rounded-xl bg-slate-900 text-slate-300 hover:bg-slate-800 transition border border-slate-800">
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-900 text-slate-300 hover:bg-slate-800 transition border border-slate-800">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
-                <a href="#portfolioGrid"
-                    class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition shadow-md shadow-blue-500/20">
+                <a href="#portfolioGrid" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition shadow-md shadow-blue-500/20">
                     <i class="fa-solid fa-shapes"></i>
                     <span>프로젝트 둘러보기</span>
                 </a>
@@ -108,133 +92,102 @@
     </nav>
 
     <!-- Hero Header -->
-    <header
-        class="relative overflow-hidden py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-950 via-black to-black border-b border-slate-900">
+    <header class="relative overflow-hidden py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-950 via-black to-black border-b border-slate-900">
         <!-- Background decorative blobs -->
-        <div
-            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl pointer-events-none">
-        </div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-
+                
                 <!-- Hero Left text -->
                 <div class="lg:col-span-7 text-center lg:text-left">
-                    <div
-                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/80 text-blue-300 text-xs font-semibold mb-4 border border-blue-800">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/80 text-blue-300 text-xs font-semibold mb-4 border border-blue-800">
                         <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
                         컴퓨터공학과 진학 희망 | 인공지능일반 프로젝트
                     </div>
-                    <h1
-                        class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
                         데이터와 소프트웨어로<br>
-                        <span
-                            class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">세상을
-                            바꿀 인재를 꿈꾸다</span>
+                        <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">세상을 바꿀 인재를 꿈꾸다</span>
                     </h1>
-
+                    
                     <!-- Intro Text with Profile Photo -->
-                    <div
-                        class="flex flex-col sm:flex-row items-center sm:items-start gap-5 mb-8 text-center sm:text-left">
-                        <div
-                            class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-indigo-500/80 shadow-lg shadow-indigo-500/20 flex-shrink-0 group bg-gradient-to-b from-indigo-950 via-slate-900 to-black p-1 flex items-center justify-center">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5 mb-8 text-center sm:text-left">
+                        <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-indigo-500/80 shadow-lg shadow-indigo-500/20 flex-shrink-0 group bg-gradient-to-b from-indigo-950 via-slate-900 to-black p-1 flex items-center justify-center">
                             <!-- Caricature Vector Avatar -->
-                            <svg class="w-full h-full transform group-hover:scale-105 transition duration-300"
-                                viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-full h-full transform group-hover:scale-105 transition duration-300" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <!-- Background Aura -->
                                 <circle cx="80" cy="80" r="70" fill="url(#bgGrad)" />
                                 <!-- Code Particles -->
-                                <text x="15" y="40" fill="#818cf8" font-size="10" font-family="monospace"
-                                    opacity="0.6">&lt;AI&gt;</text>
-                                <text x="120" y="50" fill="#38bdf8" font-size="10" font-family="monospace"
-                                    opacity="0.6">{CS}</text>
-                                <text x="20" y="130" fill="#a78bfa" font-size="9" font-family="monospace"
-                                    opacity="0.5">0101</text>
-
+                                <text x="15" y="40" fill="#818cf8" font-size="10" font-family="monospace" opacity="0.6">&lt;AI&gt;</text>
+                                <text x="120" y="50" fill="#38bdf8" font-size="10" font-family="monospace" opacity="0.6">{CS}</text>
+                                <text x="20" y="130" fill="#a78bfa" font-size="9" font-family="monospace" opacity="0.5">0101</text>
+                                
                                 <!-- Body Hoodie -->
                                 <path d="M35 150 C35 120, 50 110, 80 110 C110 110, 125 120, 125 150 Z" fill="#1e1b4b" />
                                 <path d="M55 110 L80 135 L105 110" stroke="#4f46e5" stroke-width="3" fill="none" />
                                 <circle cx="80" cy="125" r="4" fill="#a855f7" />
-
+                                
                                 <!-- Face -->
-                                <path d="M50 70 C50 100, 110 100, 110 70 C110 50, 50 50, 50 70 Z" fill="#fde047"
-                                    opacity="0.15" />
+                                <path d="M50 70 C50 100, 110 100, 110 70 C110 50, 50 50, 50 70 Z" fill="#fde047" opacity="0.15" />
                                 <ellipse cx="80" cy="72" rx="28" ry="32" fill="#fdec6e" />
                                 <!-- Cheeks -->
                                 <ellipse cx="64" cy="78" rx="5" ry="3" fill="#f87171" opacity="0.6" />
                                 <ellipse cx="96" cy="78" rx="5" ry="3" fill="#f87171" opacity="0.6" />
-
+                                
                                 <!-- Clear Eyes & Pupils (Glasses Removed) -->
                                 <circle cx="67" cy="69" r="4.5" fill="#0f172a" />
                                 <circle cx="68.5" cy="67.5" r="1.5" fill="#ffffff" />
                                 <circle cx="93" cy="69" r="4.5" fill="#0f172a" />
                                 <circle cx="94.5" cy="67.5" r="1.5" fill="#ffffff" />
-
+                                
                                 <!-- Smile -->
-                                <path d="M72 84 Q80 90 88 84" stroke="#b45309" stroke-width="2.5" stroke-linecap="round"
-                                    fill="none" />
-
+                                <path d="M72 84 Q80 90 88 84" stroke="#b45309" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                                
                                 <!-- Stylized Hair -->
-                                <path
-                                    d="M48 65 C45 40, 65 30, 80 30 C100 30, 115 42, 112 65 C105 45, 95 40, 80 42 C68 40, 55 48, 48 65 Z"
-                                    fill="#312e81" />
+                                <path d="M48 65 C45 40, 65 30, 80 30 C100 30, 115 42, 112 65 C105 45, 95 40, 80 42 C68 40, 55 48, 48 65 Z" fill="#312e81" />
                                 <path d="M70 32 L76 22 L84 31" fill="#312e81" />
-
+                                
                                 <!-- Headset -->
-                                <path d="M46 68 C42 68 40 60 46 55 C50 50 110 50 114 55 C120 60 118 68 114 68"
-                                    stroke="#06b6d4" stroke-width="4" stroke-linecap="round" fill="none" />
+                                <path d="M46 68 C42 68 40 60 46 55 C50 50 110 50 114 55 C120 60 118 68 114 68" stroke="#06b6d4" stroke-width="4" stroke-linecap="round" fill="none" />
                                 <rect x="42" y="60" width="8" height="16" rx="3" fill="#0891b2" />
                                 <rect x="110" y="60" width="8" height="16" rx="3" fill="#0891b2" />
 
                                 <defs>
-                                    <linearGradient id="bgGrad" x1="0" y1="0" x2="160" y2="160"
-                                        gradientUnits="userSpaceOnUse">
+                                    <linearGradient id="bgGrad" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
                                         <stop stop-color="#31104b" />
                                         <stop offset="1" stop-color="#0f172a" />
                                     </linearGradient>
                                 </defs>
                             </svg>
-                            <div
-                                class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-1 text-center">
-                                <span class="text-[10px] font-bold text-indigo-300"><i
-                                        class="fa-solid fa-face-smile mr-1"></i>캐리커쳐 서진</span>
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-1 text-center">
+                                <span class="text-[10px] font-bold text-indigo-300"><i class="fa-solid fa-face-smile mr-1"></i>캐리커쳐 서진</span>
                             </div>
                         </div>
                         <p class="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed my-auto">
-                            생성형 AI 활용 원칙부터 스토리 제작, 진로 데이터 분석, 학교 및 지역 문제 해결 웹앱 개발까지의 학습 여정과 성찰을 담은 <strong>컴퓨터공학과 지망
-                                고등학교 2학년 서진</strong>의 통합 포트폴리오입니다.
+                            생성형 AI 활용 원칙부터 스토리 제작, 진로 데이터 분석, 학교 및 지역 문제 해결 웹앱 개발까지의 학습 여정과 성찰을 담은 <strong>컴퓨터공학과 지망 고등학교 2학년 서진</strong>의 통합 포트폴리오입니다.
                         </p>
                     </div>
 
                     <!-- Student Profile Summary Card -->
-                    <div
-                        class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-wrap items-center justify-between gap-4 backdrop-blur-md">
+                    <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-wrap items-center justify-between gap-4 backdrop-blur-md">
                         <div class="flex items-center gap-3">
-                            <div
-                                class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500 shadow-md bg-indigo-950 p-0.5 flex items-center justify-center">
-                                <svg class="w-full h-full" viewBox="0 0 160 160" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                            <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500 shadow-md bg-indigo-950 p-0.5 flex items-center justify-center">
+                                <svg class="w-full h-full" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="80" cy="80" r="70" fill="#1e1b4b" />
-                                    <path d="M35 150 C35 120, 50 110, 80 110 C110 110, 125 120, 125 150 Z"
-                                        fill="#312e81" />
+                                    <path d="M35 150 C35 120, 50 110, 80 110 C110 110, 125 120, 125 150 Z" fill="#312e81" />
                                     <ellipse cx="80" cy="72" rx="28" ry="32" fill="#fdec6e" />
                                     <circle cx="67" cy="69" r="4" fill="#0f172a" />
                                     <circle cx="68.5" cy="67.5" r="1.2" fill="#ffffff" />
                                     <circle cx="93" cy="69" r="4" fill="#0f172a" />
                                     <circle cx="94.5" cy="67.5" r="1.2" fill="#ffffff" />
-                                    <path d="M72 84 Q80 90 88 84" stroke="#b45309" stroke-width="2"
-                                        stroke-linecap="round" fill="none" />
-                                    <path
-                                        d="M48 65 C45 40, 65 30, 80 30 C100 30, 115 42, 112 65 C105 45, 95 40, 80 42 C68 40, 55 48, 48 65 Z"
-                                        fill="#4338ca" />
+                                    <path d="M72 84 Q80 90 88 84" stroke="#b45309" stroke-width="2" stroke-linecap="round" fill="none" />
+                                    <path d="M48 65 C45 40, 65 30, 80 30 C100 30, 115 42, 112 65 C105 45, 95 40, 80 42 C68 40, 55 48, 48 65 Z" fill="#4338ca" />
                                 </svg>
                             </div>
                             <div class="text-left">
                                 <div class="flex items-center gap-2">
                                     <h4 class="font-bold text-white text-base">서진</h4>
-                                    <span
-                                        class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-900/60 text-blue-300 border border-blue-800">고등학교
-                                        2학년</span>
+                                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-900/60 text-blue-300 border border-blue-800">고등학교 2학년</span>
                                 </div>
                                 <p class="text-xs text-blue-400 font-semibold flex items-center gap-1 mt-0.5">
                                     <i class="fa-solid fa-graduation-cap"></i> 희망 진로: 컴퓨터공학과 (CS)
@@ -260,15 +213,12 @@
 
                 <!-- Hero Right Overview Radar/Stats Visual -->
                 <div class="lg:col-span-5 flex justify-center">
-                    <div
-                        class="w-full max-w-md p-6 rounded-3xl bg-slate-900/90 shadow-xl border border-slate-800 relative backdrop-blur-md">
+                    <div class="w-full max-w-md p-6 rounded-3xl bg-slate-900/90 shadow-xl border border-slate-800 relative backdrop-blur-md">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="font-bold text-white flex items-center gap-2 text-sm">
                                 <i class="fa-solid fa-chart-pie text-indigo-400"></i> AI & CS 5대 역량 종합
                             </h3>
-                            <span
-                                class="text-xs bg-indigo-950 text-indigo-300 font-semibold px-2.5 py-1 rounded-full border border-indigo-800">자체
-                                진단</span>
+                            <span class="text-xs bg-indigo-950 text-indigo-300 font-semibold px-2.5 py-1 rounded-full border border-indigo-800">자체 진단</span>
                         </div>
                         <div class="h-64 relative flex items-center justify-center">
                             <canvas id="overviewRadarChart"></canvas>
@@ -282,48 +232,33 @@
 
     <!-- Filter & Search Controls Section -->
     <section id="portfolioGrid" class="py-8 bg-black/90 border-b border-slate-800 sticky top-16 z-30 backdrop-blur-md">
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            
             <!-- Category Filter Pills -->
-            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none"
-                id="filterContainer">
-                <button onclick="filterCards('all')"
-                    class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-md shadow-blue-500/20 whitespace-nowrap"
-                    data-filter="all">
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="filterContainer">
+                <button onclick="filterCards('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-md shadow-blue-500/20 whitespace-nowrap" data-filter="all">
                     전체 보기 (8)
                 </button>
-                <button onclick="filterCards('ethics')"
-                    class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap"
-                    data-filter="ethics">
+                <button onclick="filterCards('ethics')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap" data-filter="ethics">
                     <i class="fa-solid fa-shield-halved text-amber-500 mr-1"></i> 윤리 & 원칙
                 </button>
-                <button onclick="filterCards('creative')"
-                    class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap"
-                    data-filter="creative">
+                <button onclick="filterCards('creative')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap" data-filter="creative">
                     <i class="fa-solid fa-wand-magic-sparkles text-purple-500 mr-1"></i> 창작 & 스토리
                 </button>
-                <button onclick="filterCards('career')"
-                    class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap"
-                    data-filter="career">
+                <button onclick="filterCards('career')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap" data-filter="career">
                     <i class="fa-solid fa-briefcase text-blue-500 mr-1"></i> 진로 & 데이터
                 </button>
-                <button onclick="filterCards('app')"
-                    class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap"
-                    data-filter="app">
+                <button onclick="filterCards('app')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap" data-filter="app">
                     <i class="fa-solid fa-laptop-code text-emerald-500 mr-1"></i> 웹앱 & 공공데이터
                 </button>
-                <button onclick="filterCards('reflection')"
-                    class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap"
-                    data-filter="reflection">
+                <button onclick="filterCards('reflection')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 whitespace-nowrap" data-filter="reflection">
                     <i class="fa-solid fa-heart text-rose-500 mr-1"></i> 성찰
                 </button>
             </div>
 
             <!-- Search Bar -->
             <div class="relative w-full md:w-64 flex-shrink-0">
-                <input type="text" id="searchInput" onkeyup="searchCards()" placeholder="키워드로 검색..."
-                    class="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-800 bg-slate-900 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <input type="text" id="searchInput" onkeyup="searchCards()" placeholder="키워드로 검색..." class="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-800 bg-slate-900 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-500 text-xs"></i>
             </div>
 
@@ -332,22 +267,19 @@
 
     <!-- Main Content Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow bg-black">
-
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="cardsGrid">
 
             <!-- Card 1: 생성형 AI 활용 원칙 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="ethics" data-title="생성형 AI 활용 원칙 AI 윤리 할루시네이션 저작권">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="ethics" data-title="생성형 AI 활용 원칙 AI 윤리 할루시네이션 저작권">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-950/80 text-amber-300 border border-amber-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-950/80 text-amber-300 border border-amber-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-shield-halved"></i> AI 윤리 & 가이드라인
                         </span>
                         <span class="text-xs text-slate-500">Task 01</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-scale-balanced"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">생성형 AI 활용 원칙</h3>
@@ -356,28 +288,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-slate-500"><i class="fa-regular fa-clock mr-1"></i>검증 가이드
-                        완료</span>
-                    <a href="./notebook lm/index.html"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-slate-500"><i class="fa-regular fa-clock mr-1"></i>검증 가이드 완료</span>
+                    <a href="./notebook lm/index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Card 2: AI 스토리와 영상 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="creative" data-title="AI 스토리와 영상 프롬프트 시나리오 미디어 창작 생성형">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="creative" data-title="AI 스토리와 영상 프롬프트 시나리오 미디어 창작 생성형">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-950/80 text-purple-300 border border-purple-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-950/80 text-purple-300 border border-purple-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-wand-magic-sparkles"></i> AI 창작 & 미디어
                         </span>
                         <span class="text-xs text-slate-500">Task 02</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-film"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">AI 스토리와 영상</h3>
@@ -386,28 +313,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-purple-400 font-semibold"><i
-                            class="fa-solid fa-play circle mr-1"></i>영상 및 시나리오</span>
-                    <a href="https://seojinnnnnnnn.github.io/AI2026/video/"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-purple-400 font-semibold"><i class="fa-solid fa-play circle mr-1"></i>영상 및 시나리오</span>
+                    <a href="https://seojinnnnnnnn.github.io/AI2026/video/" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Card 3: 진로 데이터 분석 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="career" data-title="진로 데이터 분석 통계 직업 트렌드 채용 시각화 컴퓨터공학과">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="career" data-title="진로 데이터 분석 통계 직업 트렌드 채용 시각화 컴퓨터공학과">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-950/80 text-blue-300 border border-blue-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-950/80 text-blue-300 border border-blue-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-chart-line"></i> 데이터 분석
                         </span>
                         <span class="text-xs text-slate-500">Task 03</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-chart-pie"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">진로 데이터 분석</h3>
@@ -416,28 +338,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-database mr-1"></i>공공데이터
-                        결합</span>
-                    <a href="./data/index.html"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-database mr-1"></i>공공데이터 결합</span>
+                    <a href="./data/index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Card 4: 나의 진로 리포트 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="career" data-title="나의 진로 리포트 컴퓨터공학과 학종 로드맵 개발자 AI 알고리즘">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="career" data-title="나의 진로 리포트 컴퓨터공학과 학종 로드맵 개발자 AI 알고리즘">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950/80 text-indigo-300 border border-indigo-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950/80 text-indigo-300 border border-indigo-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-id-card"></i> 진로 설계
                         </span>
                         <span class="text-xs text-slate-500">Task 04</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-compass"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">나의 진로 리포트</h3>
@@ -446,28 +363,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-road mr-1"></i>CS 로드맵
-                        포함</span>
-                    <button onclick="openModal('modal-career-report')"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-indigo-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-road mr-1"></i>CS 로드맵 포함</span>
+                    <button onclick="openModal('modal-career-report')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-indigo-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Card 5: 지역 문제 데이터 분석 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="app" data-title="지역 문제 데이터 분석 교통 사각지대 공공 데이터 부산 문제 해결">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="app" data-title="지역 문제 데이터 분석 교통 사각지대 공공 데이터 부산 문제 해결">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-location-dot"></i> 지역사회 데이터
                         </span>
                         <span class="text-xs text-slate-500">Task 05</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-map-location-dot"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">지역 문제 데이터 분석</h3>
@@ -476,28 +388,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-slate-500"><i
-                            class="fa-solid fa-magnifying-glass-chart mr-1"></i>지적 문제 원인 도출</span>
-                    <a href="https://seojinnnnnnnn.github.io/AI2026_KIDS/"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-magnifying-glass-chart mr-1"></i>지적 문제 원인 도출</span>
+                    <a href="./PRD.md/index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Card 6: 부산 페스티벌 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="app" data-title="부산 페스티벌 축제 스마트 이벤트 프로토타입 개발 알고리즘">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="app" data-title="부산 페스티벌 축제 스마트 이벤트 프로토타입 개발 알고리즘">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-laptop-code"></i> AI/SW 문제해결
                         </span>
                         <span class="text-xs text-slate-500">Task 06</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-utensils"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">부산 페스티벌</h3>
@@ -506,28 +413,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-cyan-400 font-semibold"><i
-                            class="fa-solid fa-mobile-screen mr-1"></i>인터렉티브 데모</span>
-                    <a href="https://festival01-opal.vercel.app/"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-cyan-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-cyan-400 font-semibold"><i class="fa-solid fa-mobile-screen mr-1"></i>인터렉티브 데모</span>
+                    <a href="./fastival/index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-cyan-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Card 7: 공공데이터 앱 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="app" data-title="공공데이터 앱 API 미세먼지 스마트 쉼터 위치 지도 애플리케이션">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="app" data-title="공공데이터 앱 API 미세먼지 스마트 쉼터 위치 지도 애플리케이션">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-teal-950/80 text-teal-300 border border-teal-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-teal-950/80 text-teal-300 border border-teal-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-cloud-sun"></i> API 연동 웹앱
                         </span>
                         <span class="text-xs text-slate-500">Task 07</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-wind"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">공공데이터 앱</h3>
@@ -536,28 +438,23 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-plug mr-1"></i>실시간 API
-                        연동</span>
-                    <button onclick="openModal('modal-public-app')"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-teal-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-slate-500"><i class="fa-solid fa-plug mr-1"></i>실시간 API 연동</span>
+                    <a href="./meal/index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-teal-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
 
             <!-- Card 8: 최종 성찰 내용 -->
-            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm"
-                data-category="reflection" data-title="최종 성찰 내용 학습 소감 미래 가치 인간 AI 동행 수강 소감 컴퓨터공학">
+            <div class="portfolio-card bg-slate-900/90 rounded-2xl p-6 flex flex-col justify-between card-hover border border-slate-800 shadow-sm" data-category="reflection" data-title="최종 성찰 내용 학습 소감 미래 가치 인간 AI 동행 수강 소감 컴퓨터공학">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-semibold bg-rose-950/80 text-rose-300 border border-rose-800 flex items-center gap-1.5">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-rose-950/80 text-rose-300 border border-rose-800 flex items-center gap-1.5">
                             <i class="fa-solid fa-heart"></i> 종합 성찰
                         </span>
                         <span class="text-xs text-slate-500">Task 08</span>
                     </div>
-                    <div
-                        class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-4">
                         <i class="fa-solid fa-pen-nib"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">최종 성찰 내용</h3>
@@ -566,10 +463,8 @@
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-medium text-rose-400 font-semibold"><i
-                            class="fa-solid fa-quote-left mr-1"></i>최종 성장 에세이</span>
-                    <button onclick="openModal('modal-reflection')"
-                        class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
+                    <span class="text-xs font-medium text-rose-400 font-semibold"><i class="fa-solid fa-quote-left mr-1"></i>최종 성장 에세이</span>
+                    <button onclick="openModal('modal-reflection')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-600 hover:text-white text-slate-200 text-xs font-bold transition flex items-center gap-1">
                         자세히 보기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>
@@ -580,12 +475,10 @@
     </main>
 
     <!-- Modals Container for Detailed Cards -->
-    <div id="modalOverlay"
-        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-
+    <div id="modalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        
         <!-- Modal 1: 생성형 AI 활용 원칙 -->
-        <div id="modal-ethics"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-ethics" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -593,7 +486,7 @@
                 <i class="fa-solid fa-shield-halved"></i> Task 01 | AI 윤리 & 활용 원칙
             </div>
             <h2 class="text-2xl font-black text-white mb-4">생성형 AI 안전 활용 5대 원칙</h2>
-
+            
             <div class="space-y-4 text-sm text-slate-300">
                 <div class="p-4 rounded-xl bg-amber-950/40 border border-amber-800">
                     <h4 class="font-bold text-amber-200 mb-2">핵심 수칙 요약</h4>
@@ -613,18 +506,15 @@
                     </h4>
                     <div class="space-y-2 text-xs">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" onchange="updateChecklistProgress()"
-                                class="ethical-check rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <input type="checkbox" onchange="updateChecklistProgress()" class="ethical-check rounded text-blue-600 bg-slate-900 border-slate-700">
                             <span>생성물의 정보 사실 여부를 공공/학술 자료로 확인했는가?</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" onchange="updateChecklistProgress()"
-                                class="ethical-check rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <input type="checkbox" onchange="updateChecklistProgress()" class="ethical-check rounded text-blue-600 bg-slate-900 border-slate-700">
                             <span>프롬프트에 개인 식별 가능 정보(이름, 주민번호 등)가 배제되었는가?</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" onchange="updateChecklistProgress()"
-                                class="ethical-check rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <input type="checkbox" onchange="updateChecklistProgress()" class="ethical-check rounded text-blue-600 bg-slate-900 border-slate-700">
                             <span>보고서 하단에 "ChatGPT-4o 활용" 등의 명시 표기를 작성하였는가?</span>
                         </label>
                     </div>
@@ -636,8 +526,7 @@
         </div>
 
         <!-- Modal 2: AI 스토리와 영상 -->
-        <div id="modal-creative"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-creative" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -649,31 +538,24 @@
 
             <div class="space-y-4">
                 <!-- Video Placeholder Mockup -->
-                <div
-                    class="relative aspect-video rounded-2xl bg-black flex flex-col items-center justify-center text-white p-4 overflow-hidden group border border-purple-500/30">
+                <div class="relative aspect-video rounded-2xl bg-black flex flex-col items-center justify-center text-white p-4 overflow-hidden group border border-purple-500/30">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                    <i
-                        class="fa-solid fa-circle-play text-5xl text-purple-400 group-hover:scale-110 transition duration-300 z-10 cursor-pointer"></i>
-                    <span class="z-10 mt-3 text-sm font-semibold text-slate-200">AI 툴(Midjourney + Runway) 기반 숏폼 예고편
-                        시청</span>
-                    <span class="z-10 text-[10px] text-purple-300 mt-1">※ 프롬프트: "Cyberpunk Seoul in 2040, high realistic
-                        cinematic light"</span>
+                    <i class="fa-solid fa-circle-play text-5xl text-purple-400 group-hover:scale-110 transition duration-300 z-10 cursor-pointer"></i>
+                    <span class="z-10 mt-3 text-sm font-semibold text-slate-200">AI 툴(Midjourney + Runway) 기반 숏폼 예고편 시청</span>
+                    <span class="z-10 text-[10px] text-purple-300 mt-1">※ 프롬프트: "Cyberpunk Seoul in 2040, high realistic cinematic light"</span>
                 </div>
 
-                <div
-                    class="p-4 rounded-xl bg-purple-950/40 border border-purple-800 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800 text-xs sm:text-sm text-slate-300 leading-relaxed">
                     <h4 class="font-bold text-purple-200 mb-1">줄거리 요약</h4>
                     <p>
-                        2040년, 모든 도시 문제와 행정 판결을 최적화하는 AI '아스트레아'. 주인공 현우는 AI의 효율적인 결정 덕에 안전한 도시를 살아가지만, 감정이 개입된 인간의 선택이
-                        배제되는 과정에서 윤리적 딜레마에 부딪히게 된다. 인간성과 기술 간의 공존을 묻는 가상의 SF 단편 스토리.
+                        2040년, 모든 도시 문제와 행정 판결을 최적화하는 AI '아스트레아'. 주인공 현우는 AI의 효율적인 결정 덕에 안전한 도시를 살아가지만, 감정이 개입된 인간의 선택이 배제되는 과정에서 윤리적 딜레마에 부딪히게 된다. 인간성과 기술 간의 공존을 묻는 가상의 SF 단편 스토리.
                     </p>
                 </div>
             </div>
         </div>
 
         <!-- Modal 3: 진로 데이터 분석 -->
-        <div id="modal-career-data"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-career-data" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -681,7 +563,7 @@
                 <i class="fa-solid fa-chart-line"></i> Task 03 | 컴퓨터공학 관련 직군 채용 데이터 분석
             </div>
             <h2 class="text-2xl font-black text-white mb-4">CS 및 AI 관련 직무 채용 트렌드</h2>
-
+            
             <div class="h-60 mb-4">
                 <canvas id="careerChart"></canvas>
             </div>
@@ -691,8 +573,7 @@
         </div>
 
         <!-- Modal 4: 나의 진로 리포트 -->
-        <div id="modal-career-report"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-career-report" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -719,16 +600,14 @@
                 <div class="p-4 rounded-xl border border-slate-800 bg-slate-950">
                     <h4 class="font-bold text-white mb-2">컴퓨터공학과 전공적합성 핵심 역량</h4>
                     <p class="leading-relaxed">
-                        컴퓨터공학과 진학을 준비하며 단순한 프로그램 사용자를 넘어, '문제 정의 - 알고리즘 구상 - 데이터 처리 및 개발 - 윤리적 검증'으로 이어지는 전 과정의 논리를
-                        다졌습니다.
+                        컴퓨터공학과 진학을 준비하며 단순한 프로그램 사용자를 넘어, '문제 정의 - 알고리즘 구상 - 데이터 처리 및 개발 - 윤리적 검증'으로 이어지는 전 과정의 논리를 다졌습니다.
                     </p>
                 </div>
             </div>
         </div>
 
         <!-- Modal 5: 지역 문제 데이터 분석 -->
-        <div id="modal-local-data"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-local-data" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -736,19 +615,17 @@
                 <i class="fa-solid fa-location-dot"></i> Task 05 | 지역 문제 데이터 분석
             </div>
             <h2 class="text-2xl font-black text-white mb-4">심야 교통 사각지대 분석 리포트</h2>
-
+            
             <div class="h-60 mb-4">
                 <canvas id="localChart"></canvas>
             </div>
             <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800 text-xs sm:text-sm text-slate-300">
-                <p><strong>인사이트 도출:</strong> A지구와 C지구의 심야 버스 배차 간격이 주간 대비 3.5배 늘어나 시민 불편 지수가 최고치에 달함. 수요응답형 버스(DRT) 노선
-                    최적화 알고리즘 기반 재배치 방안 제안.</p>
+                <p><strong>인사이트 도출:</strong> A지구와 C지구의 심야 버스 배차 간격이 주간 대비 3.5배 늘어나 시민 불편 지수가 최고치에 달함. 수요응답형 버스(DRT) 노선 최적화 알고리즘 기반 재배치 방안 제안.</p>
             </div>
         </div>
 
         <!-- Modal 6: 학교 문제 해결 웹앱 -->
-        <div id="modal-school-app"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-school-app" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -767,15 +644,9 @@
                 <div class="py-4 text-center">
                     <p class="text-xs text-slate-400 mb-1">식사 후 예상 잔반량 입력</p>
                     <div class="flex justify-center gap-2 my-3">
-                        <button onclick="simulateWaste('0% (완식!)')"
-                            class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold">깨끗함
-                            (0%)</button>
-                        <button onclick="simulateWaste('30% (보통)')"
-                            class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-xs font-bold">조금
-                            남음</button>
-                        <button onclick="simulateWaste('50%+ (많음)')"
-                            class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-xs font-bold">많이
-                            남음</button>
+                        <button onclick="simulateWaste('0% (완식!)')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold">깨끗함 (0%)</button>
+                        <button onclick="simulateWaste('30% (보통)')" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-xs font-bold">조금 남음</button>
+                        <button onclick="simulateWaste('50%+ (많음)')" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-xs font-bold">많이 남음</button>
                     </div>
                     <p id="appResult" class="text-xs text-cyan-300 font-medium h-5">버튼을 눌러 AI 스코어를 측정해 보세요.</p>
                 </div>
@@ -783,8 +654,7 @@
         </div>
 
         <!-- Modal 7: 공공데이터 앱 -->
-        <div id="modal-public-app"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-public-app" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -792,7 +662,7 @@
                 <i class="fa-solid fa-wind"></i> Task 07 | Public Data API
             </div>
             <h2 class="text-2xl font-black text-white mb-2">우리 동네 스마트 쉼터 & 공기질 앱</h2>
-
+            
             <div class="p-4 rounded-xl bg-teal-950/40 border border-teal-800 my-4">
                 <div class="flex items-center justify-between text-xs sm:text-sm text-slate-200 font-bold mb-2">
                     <span><i class="fa-solid fa-location-dot text-teal-400"></i> 부산 연제구 연산동 현황</span>
@@ -805,8 +675,7 @@
         </div>
 
         <!-- Modal 8: 최종 성찰 내용 -->
-        <div id="modal-reflection"
-            class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
+        <div id="modal-reflection" class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative hidden my-8 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -819,8 +688,7 @@
                 <div class="p-4 rounded-xl bg-rose-950/30 border border-rose-900">
                     <h4 class="font-bold text-rose-200 mb-1">"컴퓨터공학, 기술을 넘어 사람을 향하는 소프트웨어"</h4>
                     <p>
-                        컴퓨터공학과 진학을 희망하면서 처음 생성형 AI를 접했을 때는 단순히 구현 시간을 줄여주는 효율적인 개발 도구로 다가왔습니다. 그러나 본 수업에서 AI 윤리, 데이터 분석,
-                        그리고 문제 해결 프로토타입 개발을 경험하면서, 기술 그 자체보다 문제를 정의하고 알고리즘을 비판적으로 다루는 개발자의 가치관이 훨씬 중요함을 느꼈습니다.
+                        컴퓨터공학과 진학을 희망하면서 처음 생성형 AI를 접했을 때는 단순히 구현 시간을 줄여주는 효율적인 개발 도구로 다가왔습니다. 그러나 본 수업에서 AI 윤리, 데이터 분석, 그리고 문제 해결 프로토타입 개발을 경험하면서, 기술 그 자체보다 문제를 정의하고 알고리즘을 비판적으로 다루는 개발자의 가치관이 훨씬 중요함을 느꼈습니다.
                     </p>
                 </div>
                 <p>
@@ -843,22 +711,15 @@
 
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 max-w-xl mx-auto shadow-md">
                 <div class="flex justify-center gap-2 text-2xl text-amber-400 mb-4" id="starContainer">
-                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition"
-                        onclick="ratePortfolio(1)"></i>
-                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition"
-                        onclick="ratePortfolio(2)"></i>
-                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition"
-                        onclick="ratePortfolio(3)"></i>
-                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition"
-                        onclick="ratePortfolio(4)"></i>
-                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition"
-                        onclick="ratePortfolio(5)"></i>
+                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition" onclick="ratePortfolio(1)"></i>
+                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition" onclick="ratePortfolio(2)"></i>
+                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition" onclick="ratePortfolio(3)"></i>
+                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition" onclick="ratePortfolio(4)"></i>
+                    <i class="fa-regular fa-star cursor-pointer hover:scale-125 transition" onclick="ratePortfolio(5)"></i>
                 </div>
                 <div class="flex gap-2">
-                    <input type="text" id="feedbackInput" placeholder="응원의 한마디 또는 피드백을 입력하세요..."
-                        class="flex-grow px-4 py-2 rounded-xl text-xs sm:text-sm border border-slate-800 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button onclick="submitFeedback()"
-                        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-bold transition">전송</button>
+                    <input type="text" id="feedbackInput" placeholder="응원의 한마디 또는 피드백을 입력하세요..." class="flex-grow px-4 py-2 rounded-xl text-xs sm:text-sm border border-slate-800 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button onclick="submitFeedback()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-bold transition">전송</button>
                 </div>
                 <p id="feedbackMsg" class="text-xs text-emerald-400 mt-3 hidden font-medium"></p>
             </div>
@@ -877,7 +738,7 @@
     <script>
         let overviewChart, careerChart, localChart;
 
-        window.onload = function () {
+        window.onload = function() {
             initOverviewChart();
             initCareerChart();
             initLocalChart();
@@ -946,7 +807,7 @@
         function openModal(modalId) {
             const overlay = document.getElementById('modalOverlay');
             const targetModal = document.getElementById(modalId);
-
+            
             // Hide all modals first
             document.querySelectorAll('.modal-content').forEach(m => m.classList.add('hidden'));
 
@@ -965,7 +826,7 @@
         }
 
         // Close modal on background overlay click
-        document.getElementById('modalOverlay').addEventListener('click', function (e) {
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
@@ -975,7 +836,7 @@
         function updateChecklistProgress() {
             const checkboxes = document.querySelectorAll('.ethical-check');
             let checkedCount = 0;
-            checkboxes.forEach(cb => { if (cb.checked) checkedCount++; });
+            checkboxes.forEach(cb => { if(cb.checked) checkedCount++; });
             const progressPercent = (checkedCount / checkboxes.length) * 100;
             document.getElementById('checklistBar').style.width = progressPercent + '%';
         }
@@ -1096,5 +957,4 @@
         }
     </script>
 </body>
-
 </html>
